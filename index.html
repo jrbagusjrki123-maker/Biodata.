@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biodata Diri</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:'Poppins', sans-serif;
+    background:linear-gradient(135deg,#0f172a,#1e293b,#334155);
+    min-height:100vh;
+}
+
+.card{
+    background:#0b1220;
+    width:90%;
+    max-width:360px;
+    margin:70px auto;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 20px 40px rgba(0,0,0,.6);
+    color:#e5e7eb;
+    animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+img{
+    width:130px;
+    height:130px;
+    object-fit:cover;
+    border-radius:50%;
+    border:3px solid #475569;
+    box-shadow:0 10px 25px rgba(0,0,0,.6);
+}
+
+h2{
+    margin:15px 0 6px;
+    color:#f8fafc;
+}
+
+hr{
+    border:none;
+    height:1px;
+    background:#334155;
+    margin:14px 0;
+}
+
+p{
+    margin:6px 0;
+    color:#cbd5e1;
+}
+
+.btn{
+    display:block;
+    margin-top:16px;
+    padding:12px;
+    background:#334155;
+    color:#f8fafc;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#475569;
+    transform:scale(1.03);
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <img src="./foto.jpg" alt="Foto Profil">
+    <h2>Nama Kamu</h2>
+    <hr>
+    <p>📍 Kota Kamu</p>
+    <p>💻 Editing | Coding</p>
+
+    <a class="btn" href="https://wa.me/628xxxxxxxxxx">WhatsApp</a>
+</div>
+
+</body>
+</html>

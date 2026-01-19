@@ -3,99 +3,253 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Biodata Diri</title>
-
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
+<title>ZYDER • IG Tap Post</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
 <style>
+:root{--purple:#7c3aed;}
 body{
-    margin:0;
-    font-family:'Poppins', sans-serif;
-    background:linear-gradient(135deg,#0f172a,#1e293b,#334155);
-    min-height:100vh;
+  margin:0;
+  font-family:'Rajdhani', sans-serif;
+  background:linear-gradient(180deg,#05030a,#0b0720);
+  display:flex;
+  justify-content:center;
+  padding:20px 0;
+  color:#e5e7eb;
 }
 
+/* CARD */
 .card{
-    background:#0b1220;
-    width:90%;
-    max-width:360px;
-    margin:70px auto;
-    padding:25px;
-    border-radius:20px;
-    text-align:center;
-    box-shadow:0 20px 40px rgba(0,0,0,.6);
-    color:#e5e7eb;
-    animation: fadeUp 1s ease forwards;
+  width:92%;
+  max-width:400px;
+  background:#0a0a12;
+  border-radius:18px;
+  padding:16px;
+  border:1px solid rgba(124,58,237,.25);
 }
 
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(30px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+/* TOP BAR */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-bottom:10px;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.topbar h2{margin:0;font-size:18px;letter-spacing:2px;color:#e9d5ff;}
+
+/* PROFILE */
+.ig-profile{
+  display:flex;
+  gap:14px;
+  padding:14px 0;
+}
+.ig-profile img{
+  width:84px;height:84px;border-radius:50%;object-fit:cover;border:2px solid #222;
+}
+.ig-info{flex:1;}
+.ig-stats{
+  display:flex;
+  justify-content:space-between;
+  text-align:center;
+}
+.ig-stats div{font-size:13px;}
+.ig-stats span{display:block;font-weight:700;font-size:15px;}
+.ig-bio{margin-top:6px;font-size:13px;color:#c7bfff;}
+.ig-buttons{margin-top:10px;display:flex;gap:8px;}
+.ig-buttons a{
+  flex:1;text-align:center;padding:8px 0;font-size:13px;text-decoration:none;
+  border-radius:8px;border:1px solid #333;color:#e5e7eb;
+}
+.ig-buttons .follow{background:#1f1f2f;border-color:var(--purple);}
+.social-row{display:flex;gap:8px;margin-top:12px;}
+.social-row a{
+  flex:1;text-align:center;padding:6px 0;font-size:13px;text-decoration:none;
+  color:#c7bfff;border:1px solid #333;border-radius:8px;background:#111;transition:.2s;
+}
+.social-row a:hover{border-color:var(--purple);color:#ede9fe;}
+
+/* GALLERY GRID 3 FOTO LAMA */
+.gallery{
+  margin-top:24px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:6px;
+}
+.gallery-item{
+  position:relative;
+  border-radius:6px;
+  overflow:hidden;
+}
+.gallery-item img{
+  width:100%;
+  border:2px solid #222;
+  display:block;
+  cursor:pointer;
+  transition:transform .2s;
+}
+.gallery-item img:hover{transform:scale(1.05);}
+
+/* GALERI BARU 3 FOTO VERTIKAL */
+.new-gallery{
+  margin-top:30px; /* space di atas galeri baru */
+  display:flex;
+  flex-direction:column;
+  gap:24px; /* space antar foto vertikal */
+  padding-bottom:10px;
+}
+.new-gallery img{
+  width:100%;
+  border-radius:8px;
+  border:2px solid #222;
+}
+.new-gallery .caption{
+  text-align:center;
+  font-size:14px;
+  color:#c7bfff;
+  margin-top:6px;
 }
 
-img{
-    width:130px;
-    height:130px;
-    object-fit:cover;
-    border-radius:50%;
-    border:3px solid #475569;
-    box-shadow:0 10px 25px rgba(0,0,0,.6);
+/* OVERLAY FULLSCREEN POST */
+.post-overlay{
+  position:fixed;
+  top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,.95);
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:99;
+  overflow-y:auto;
+  padding:20px;
 }
-
-h2{
-    margin:15px 0 6px;
-    color:#f8fafc;
+.post-overlay img{
+  max-width:90%;
+  border-radius:8px;
+  border:2px solid var(--purple);
+  margin-bottom:12px;
 }
-
-hr{
-    border:none;
-    height:1px;
-    background:#334155;
-    margin:14px 0;
+.post-overlay .caption{
+  color:#c7bfff;
+  font-size:14px;
+  text-align:center;
+  line-height:1.5;
+  max-width:90%;
+  background:rgba(0,0,0,0.4);
+  padding:8px 10px;
+  border-radius:6px;
 }
-
-p{
-    margin:6px 0;
-    color:#cbd5e1;
-}
-
-.btn{
-    display:block;
-    margin-top:16px;
-    padding:12px;
-    background:#334155;
-    color:#f8fafc;
-    text-decoration:none;
-    border-radius:30px;
-    font-weight:600;
-    transition:.3s;
-}
-
-.btn:hover{
-    background:#475569;
-    transform:scale(1.03);
+.post-overlay .close{
+  position:absolute;
+  top:12px;
+  right:12px;
+  font-size:24px;
+  color:#ede9fe;
+  text-decoration:none;
+  font-weight:bold;
 }
 </style>
 </head>
-
 <body>
 
 <div class="card">
-    <img src="./foto.jpg" alt="Foto Profil">
-    <h2>Nama Kamu</h2>
-    <hr>
-    <p>📍 Kota Kamu</p>
-    <p>💻 Editing | Coding</p>
+  <!-- TOP BAR -->
+  <div class="topbar"><h2>ZYDER</h2></div>
 
-    <a class="btn" href="https://wa.me/628xxxxxxxxxx">WhatsApp</a>
+  <!-- PROFILE -->
+  <div class="ig-profile">
+    <img src="foto.jpg">
+    <div class="ig-info">
+      <div class="ig-stats">
+        <div><span>6</span>Posts</div>
+        <div><span>1.2K</span>Followers</div>
+        <div><span>180</span>Following</div>
+      </div>
+      <div class="ig-bio">呪術師 • BAGUS PRASETYO</div>
+      <div class="ig-buttons">
+        <a class="follow" href="https://instagram.com/katzello">Follow</a>
+        <a href="https://wa.me/6281369451344">Message</a>
+      </div>
+      <div class="social-row">
+        <a href="https://wa.me/6281369451344">WhatsApp</a>
+        <a href="https://instagram.com/katzello">Instagram</a>
+        <a href="https://tiktok.com/@goodprast">TikTok</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- GALERI 3 FOTO LAMA -->
+  <div class="gallery">
+    <div class="gallery-item">
+      <img src="galeri1.jpg" onclick="openPost('post1')">
+    </div>
+    <div class="gallery-item">
+      <img src="galeri2.jpg" onclick="openPost('post2')">
+    </div>
+    <div class="gallery-item">
+      <img src="galeri3.jpg" onclick="openPost('post3')">
+    </div>
+  </div>
+
+  <!-- GALERI BARU 3 FOTO (VERTIKAL, SPACE LEBIH) -->
+  <div class="new-gallery">
+    <div>
+      <img src="galeri4.jpg" onclick="openPost('post4')">
+      <div class="caption"><strong>夢</strong> - 夢は闇の中でも希望を見せる。</div>
+    </div>
+    <div>
+      <img src="galeri5.jpg" onclick="openPost('post5')">
+      <div class="caption"><strong>力</strong> - 力は正しく使うと未来を変える。</div>
+    </div>
+    <div>
+      <img src="galeri6.jpg" onclick="openPost('post6')">
+      <div class="caption"><strong>希望</strong> - 希望は暗闇でも心を導く。</div>
+    </div>
+  </div>
+
 </div>
+
+<!-- FULLSCREEN POSTS LAMA -->
+<div class="post-overlay" id="post1">
+  <a href="#" class="close" onclick="closePost('post1')">&times;</a>
+  <img src="galeri1.jpg">
+  <div class="caption"><strong>愛</strong> - 愛とは、闇の中でも人を強くする呪い。</div>
+</div>
+<div class="post-overlay" id="post2">
+  <a href="#" class="close" onclick="closePost('post2')">&times;</a>
+  <img src="galeri2.jpg">
+  <div class="caption"><strong>心</strong> - 心が乱れれば、呪力もまた暴走する。</div>
+</div>
+<div class="post-overlay" id="post3">
+  <a href="#" class="close" onclick="closePost('post3')">&times;</a>
+  <img src="galeri3.jpg">
+  <div class="caption"><strong>縁</strong> - 縁は見えなくとも、確かにそこに存在する。</div>
+</div>
+
+<!-- FULLSCREEN POSTS BARU -->
+<div class="post-overlay" id="post4">
+  <a href="#" class="close" onclick="closePost('post4')">&times;</a>
+  <img src="galeri4.jpg">
+  <div class="caption"><strong>夢</strong> - 夢は闇の中でも希望を見せる。</div>
+</div>
+<div class="post-overlay" id="post5">
+  <a href="#" class="close" onclick="closePost('post5')">&times;</a>
+  <img src="galeri5.jpg">
+  <div class="caption"><strong>力</strong> - 力は正しく使うと未来を変える。</div>
+</div>
+<div class="post-overlay" id="post6">
+  <a href="#" class="close" onclick="closePost('post6')">&times;</a>
+  <img src="galeri6.jpg">
+  <div class="caption"><strong>希望</strong> - 希望は暗闇でも心を導く。</div>
+</div>
+
+<script>
+function openPost(id){
+  document.getElementById(id).style.display = 'flex';
+}
+function closePost(id){
+  document.getElementById(id).style.display = 'none';
+}
+</script>
 
 </body>
 </html>
